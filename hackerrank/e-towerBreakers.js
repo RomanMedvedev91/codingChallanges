@@ -62,3 +62,9 @@ In the first test case,  chooses one of the two towers and reduces it to . Then 
 
 In the second test case, there is only one tower of height .  can reduce it to a height of either  or .  chooses  as both players always choose optimally. Because  has no possible move,  wins.
 */
+
+function towerBreakers(n, m) {
+  // Write your code here
+  if (m === 1 || n % 2 === 0) return 2;
+  else return 1;
+}
