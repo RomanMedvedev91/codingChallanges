@@ -2,7 +2,6 @@ function bubbleSort(array) {
   // Only change code below this line
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length - i - 1; j++) {
-      console.log(j);
       if (array[j] > array[j + 1]) {
         let temp = array[j];
         array[j] = array[j + 1];
@@ -13,6 +12,8 @@ function bubbleSort(array) {
   return array;
   // Only change code above this line
 }
+
+module.exports = bubbleSort;
 
 console.log(bubbleSort([345, 1, 4, 2, 8]));
 // console.log(
