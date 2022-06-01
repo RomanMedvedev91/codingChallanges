@@ -6,15 +6,14 @@ You can return the answer in any order.
 */
 
 const twoSum = function (nums, target) {
-  const result = [];
+  const result = {};
 
   for (let i = 0; i < nums.length; i++) {
     let difference = target - nums[i];
-    if (nums.includes(difference)) {
-      result.push(i);
+    if (difference in result) {
+      return [result[difference], i];
     }
+    result[nums[i]] = i;
   }
-  return result;
 };
-
 module.exports = twoSum;
