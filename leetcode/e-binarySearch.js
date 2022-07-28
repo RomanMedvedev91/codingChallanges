@@ -1,20 +1,27 @@
-const search = (nums, target) => {
-  let left = 0;
-  let right = nums.length - 1;
+/*
+Input: n = 5, bad = 4
+Output: 4
+Explanation:
+call isBadVersion(3) -> false
+call isBadVersion(5) -> true
+call isBadVersion(4) -> true
+Then 4 is the first bad version.
+*/
 
-  // [-1, 0, 3, 5, 9, 12], 9), 4)
-  //
-  while (left <= right) {
-    const mid = left + Math.floor(right - left / 2);
-    if (nums[mid] === target) {
-      return mid;
-    } else if (nums[mid] > target) {
-      right = mid - 1;
-    } else {
-      left = mid + 1;
+const solution = function (isBadVersion) {
+  return function (n) {
+    let left = 1;
+    let right = n;
+
+    while (left < right) {
+      const middle = Math.floor(left + (right - left) / 2);
+
+      if (isBadVersion(middle)) {
+        right = middle;
+      } else {
+        left = middle + 1;
+      }
     }
-  }
-  return -1;
+    return left;
+  };
 };
-
-module.exports = search;
