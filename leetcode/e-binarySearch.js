@@ -25,3 +25,5 @@ const solution = function (isBadVersion) {
     return left;
   };
 };
+
+module.exports = solution;
