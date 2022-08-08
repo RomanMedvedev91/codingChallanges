@@ -39,7 +39,7 @@ var DoublyLinkedList = function () {
 
     while (currentNode) {
       temp = currentNode.prev;
-      currentNode.prev = currentNode.prev;
+      currentNode.prev = currentNode.next;
       currentNode.next = temp;
       currentNode = currentNode.prev;
     }
