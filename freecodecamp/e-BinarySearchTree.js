@@ -49,5 +49,20 @@ function BinarySearchTree() {
     }
     return curr.value;
   };
+
+  this.isPresent = (number) => {
+    if (!this.root) return false;
+
+    let currentNode = this.root;
+
+    while (currentNode) {
+      if (currentNode.value === number) return true;
+      const direction = currentNode.value > number ? "left" : "right";
+      if (!currentNode[direction]) return false;
+
+      currentNode = currentNode[direction];
+    }
+    return false;
+  };
   // Only change code above this line
 }
