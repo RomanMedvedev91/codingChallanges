@@ -30,5 +30,24 @@ function BinarySearchTree() {
       currentNode = currentNode[direction];
     }
   };
+  this.findMin = () => {
+    if (!this.root) return null;
+
+    let curr = this.root;
+    while (curr.left) {
+      curr = curr.left;
+    }
+    return curr.value;
+  };
+
+  this.findMax = () => {
+    if (!this.root) return null;
+
+    let curr = this.root;
+    while (curr.right) {
+      curr = curr.right;
+    }
+    return curr.value;
+  };
   // Only change code above this line
 }
