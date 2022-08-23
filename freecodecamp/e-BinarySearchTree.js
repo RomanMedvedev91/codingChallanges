@@ -64,5 +64,38 @@ function BinarySearchTree() {
     }
     return false;
   };
+
+  this.findMinHeight = () => {
+    if (!this.root) return -1;
+
+    function findNodeMinHeight(node) {
+      if (!node) return 0;
+      return (
+        1 +
+        Math.min(findNodeMinHeight(node.left), findNodeMinHeight(node.right))
+      );
+    }
+
+    return findNodeMinHeight(this.root) - 1;
+  };
+
+  this.findMaxHeight = function () {
+    if (!this.root) return -1;
+
+    function findNodeMaxHeight(node) {
+      if (!node) return 0;
+
+      return (
+        1 +
+        Math.max(findNodeMaxHeight(node.left), findNodeMaxHeight(node.right))
+      );
+    }
+
+    return findNodeMaxHeight(this.root) - 1;
+  };
+
+  this.isBalanced = function () {
+    return this.findMinHeight() == this.findMaxHeight();
+  };
   // Only change code above this line
 }
