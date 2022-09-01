@@ -142,5 +142,40 @@ function BinarySearchTree() {
     return traverse(this.root);
   };
 
+  this.levelOrder = function () {
+    if (!this.root) return null;
+
+    function traverse(direction, node) {
+      if (!node) return [];
+      const queue = [node];
+      const result = [];
+
+      const addEl = (node, queue) => {
+        if (node) queue.push(node);
+      };
+
+      while (queue.length > 0) {
+        const temp = queue.shift();
+        result.push(temp);
+
+        if (direction === "level") {
+          addEl(node.left, queue);
+          addEl(node.right, queue);
+        } else {
+          addEl(node.right, queue);
+          addEl(node.left, queue);
+        }
+      }
+      return result;
+    }
+
+    return traverse("level", this.root);
+  };
+
+  this.reverseLevelOrder = function () {
+    if (!this.root) return null;
+
+    return traverse("reverseLevel", this.root);
+  };
   // Only change code above this line
 }
