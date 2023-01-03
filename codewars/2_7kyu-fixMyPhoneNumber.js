@@ -16,8 +16,9 @@ Given a string, you must decide whether or not it contains a valid phone number.
 
 */
 
-export const isItANum = (str) => {
-  // your code here;
+function isItANum(str) {
   const onlyNumbers = str.replace(/[^0-9]/g, '');
   return (onlyNumbers.length === 11 && onlyNumbers[0] === '0') ? onlyNumbers : 'Not a phone number';
 }
+
+module.exports = isItANum;
