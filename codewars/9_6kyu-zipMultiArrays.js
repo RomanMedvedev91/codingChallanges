@@ -17,5 +17,5 @@ function zipNth(...arr) {
 }
 
 // console.log(zip([1, 2, 3], ['a', 'b', 'c', 'd']))
-console.log(zipNth([1, 2, 3, 4], ['a', 'b', 'c', 'd'], [10, 20, 30]))
+console.log(zipNth([1, 2, 3, 4], ['a', 'b', 'c', 'd'], [10, 20, 30]));
 module.exports = zipNth;

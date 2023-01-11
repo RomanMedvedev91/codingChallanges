@@ -15,21 +15,21 @@ function flatten(array) {
   // return array.reduce((acc, val) => acc.concat(val), [])
 
   //3d any depth
-  // let result = [];
-  // for (const el of array) {
-  //   if (Array.isArray(el)) {
-  //     result = result.concat(flatten(el));
-  //   } else {
-  //     result.push(el);
-  //   }
-  // }
-  // return result;
+  let result = [];
+  for (const el of array) {
+    if (Array.isArray(el)) {
+      result = result.concat(flatten(el));
+    } else {
+      result.push(el);
+    }
+  }
+  return result;
 
   // 4th any depth
   // return array.flat(Infinity);
 
   //5th any depth
-  return array.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatten(val) : val), []);
+  // return array.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatten(val) : val), []);
 }
 
 module.exports = flatten;
