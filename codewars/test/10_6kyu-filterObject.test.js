@@ -20,6 +20,21 @@ describe("filter obj", () => {
         email: "alex@gmail.com"
       }
     };
-    assert.deepEqual(filterObject(testObj, (name) => name === 'Alex'), { '3': { id: 3, name: 'Alex', email: 'alex@gmail.com' } });
+    assert.deepEqual(filterObject(testObj, (obj) => obj.name === 'Alex'),
+      {
+        3: {
+          id: 3,
+          name: "Alex",
+          email: "alex@gmail.com"
+        }
+      });
+    assert.deepEqual(filterObject(testObj, (obj) => obj.email === 'roe@gmail.com'),
+      {
+        2: {
+          id: 2,
+          name: "Roe",
+          email: "roe@gmail.com"
+        }
+      });
   });
 });
