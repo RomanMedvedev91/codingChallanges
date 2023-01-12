@@ -1,4 +1,5 @@
 /*
+
 Create function that flate the object
   const obj = {
   a: {
@@ -27,28 +28,60 @@ update({
     d: ''
   }
 }
-*/
-function flattenObject(object, prefix = '') {
-  const arr = Object.keys(object).reduce((acc, key) => {
-    pre = prefix.length ? prefix + '.' : '';
-    if (typeof object[key] === 'object') {
-      Object.assign(acc, flattenObject(object[key], pre + key));
-    } else {
-      acc[pre + key] = object[key];
+
+  const testObj = {
+      foo: {
+        a: 10,
+        b: 12
+      },
+      bar: {
+        c: {
+          d: 1000,
+          e: 1100
+        },
+        f: 200
+      },
+      v: 5
     }
-    return acc;
-  }, {})
-  return arr;
+
+*/
+
+function flattenObject(obj, prefix = '') {
+  let newObj = {};
+  for (const key in obj) {
+    let newKey = prefix.length ? prefix + '.' : '';
+    if (typeof obj[key] === 'object') {
+      newObj = { ...newObj, ...flattenObject(obj[key], newKey + key) };
+    } else {
+      newObj[newKey + key] = obj[key];
+    }
+  }
+  return newObj;
 }
 
-const obj = {
-  a: {
-    b: 2,
-    c: 3,
-    d: ['asdlkfj']
-  },
-  abc: 12,
-};
+// 2nd solution
+// function flattenObject(object, prefix = '') {
+//   const arr = Object.keys(object).reduce((acc, key) => {
+//     pre = prefix.length ? prefix + '.' : '';
+//     if (typeof object[key] === 'object') {
+//       Object.assign(acc, flattenObject(object[key], pre + key));
+//     } else {
+//       acc[pre + key] = object[key];
+//     }
+//     return acc;
+//   }, {})
+//   console.log(arr);
+//   return arr;
+// }
 
-console.log(flattenObject(obj));
+// const obj = {
+//   a: {
+//     b: 2,
+//     c: 3,
+//     d: ['asdlkfj']
+//   },
+//   abc: 12,
+// };
+
+// console.log(flattenObject(obj));
 module.exports = flattenObject;

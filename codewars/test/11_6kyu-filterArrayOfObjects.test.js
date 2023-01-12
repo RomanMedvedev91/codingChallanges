@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const filterArrOfObj = require("../12_6kyu-flattenObject");
+const filterArrOfObj = require("../11_6kyu-filterArrayOfObjects");
 
 describe("filter obj", () => {
   it("test", () => {
