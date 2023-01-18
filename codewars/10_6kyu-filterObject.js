@@ -3,10 +3,11 @@ Create function that filter object with given condition
 
 */
 function filterObject(obj, predicate) {
+  const res = {};
   for (const key in obj) {
-    if (predicate(obj[key])) {
+    if (predicate(key, obj[key])) {
       console.log({ [key]: obj[key] });
-      return { [key]: obj[key] };
+      res[key] = obj[key];
 
       //2d option
       //   return [key].reduce((acc, key) => {
@@ -14,6 +15,7 @@ function filterObject(obj, predicate) {
       //   }, {});
     }
   }
+  return res;
 
   //3d option 
   // const arr = Object.keys(obj).filter(key => {
