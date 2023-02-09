@@ -30,15 +30,29 @@ If you are given an array with multiple answers, return the lowest correct index
 */
 
 function findEvenIndex(arr) {
-  let index = -1;
-  for (var i = 0; i < arr.length; i++) {
-    let start = arr.slice(0, i + 1).reduce((a, b) => a + b, 0);
-    let end = arr.slice(i).reduce((a, b) => a + b, 0)
-    if (start === end) {
-      index = i
+
+  let left = 0;
+  let right = 0;
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+  if (arr.length == 0) {
+    return -1;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    if (i == 0) {
+      right = arr.slice(1).reduce(reducer, 0);
+      if (right === i) {
+        return i;
+      }
+    } else {
+      left = arr.slice(0, i).reduce(reducer, 0);
+      right = arr.slice(i + 1).reduce(reducer, 0);
+      if (left == right) {
+        return i;
+      }
     }
   }
-  return index;
 }
 
 module.exports = findEvenIndex;
