@@ -23,18 +23,10 @@ Output: 2, 3, 4, 23, 5
 */
 
 function sortByValueAndIndex(array) {
-  let newArray = [];
-  for (let i = 0; i < array.length; i++) {
-    newArray[i] = [array[i] * (i + 1), i + 1];
-  }
-  newArray.sort((a, b) => a[0] - b[0]);
-
-  for (let i = 0; i < newArray.length; i++) {
-    array[i] = newArray[i][0] / newArray[i][1];
-  }
-
-  console.log(newArray);
-  return array;
+  return array
+    .map((x, i) => [x, x * i + x])
+    .sort((a, b) => a[1] - b[1])
+    .map((a) => a[0])
 }
 
 module.exports = sortByValueAndIndex;
