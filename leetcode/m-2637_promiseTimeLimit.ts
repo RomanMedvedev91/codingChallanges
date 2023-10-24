@@ -87,3 +87,20 @@ function timeLimit(fn: Fn, t: number): Fn {
     });
   };
 }
+
+// expample of using
+async function fetchData() {
+  return new Promise((delayresolve) => {
+    setTimeout(() => {
+      delayresolve("Data fetched successfully!");
+    }, 2000);
+  });
+}
+
+const timeLimitedFetchData = timeLimit(fetchData, 1500);
+
+timeLimitedFetchData().then((result) => {
+  console.log(result);
+}).catch((error) => {
+  console.error(error);
+});
