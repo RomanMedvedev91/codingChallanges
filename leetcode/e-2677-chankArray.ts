@@ -28,9 +28,9 @@
 // Output: []
 // Explanation: There are no elements to be chunked so an empty array is returned.
 
-const chunk = (arr: number[], size: number) => {
+const chunk = (arr: Array<number>, size: number) => {
   if (arr.length === 0) return arr;
-  const chunked:[] = [];
+  const chunked:Array<any> = [];
   for (let i = 0; i < arr.length; i+=size) {
       chunked.push(arr.slice(i, i + size));
   }
