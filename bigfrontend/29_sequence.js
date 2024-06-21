@@ -80,4 +80,24 @@ const sequence = (asyncFuncs) => {
   }
  }
 
+//  * Approach 1c
+// * Same as first just using queue/array to pop func
+
+function sequence_withoutPromise(funcs){
+    
+    const next = (callback, data) => {
+        // if there're no more functions to call, call the final function in the queue.
+        if(!funcs.length) return callback(undefined, data);
+        
+        // take out (dequeue) the function entered in the functions queue
+        // call it with data and a callback for result
+        funcs.shift()((err, newData)=>{
+            // If undefined/Error, we don't need to recurse anymore and immediately call the callback
+            // Recursively call the the next
+            err ? callback(err, undefined) : next(callback, newData);
+        }, data);
+    }
+    return next;
+}
+
 console.log('ada'); // 30
