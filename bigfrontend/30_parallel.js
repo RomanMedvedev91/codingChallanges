@@ -41,6 +41,21 @@ function parallel(funcs){
  }
 }
 
+// 2nd SOLUTION
+
+const promisify = fn => input => new Promise((res, rej) => {
+  fn((err, output) => err ? rej(err) : res(output), input);
+});
+
+function parallel2(funcs) {
+  return (cb, data) => {
+    Promise
+    .all(funcs.map(fn => promisify(fn)(data)))
+    .then(res => cb(undefined, res))
+    .catch(err => cb(err, undefined));
+  }
+}
+
 const async1 = (callback) => {
   callback(undefined, 1)
 }
