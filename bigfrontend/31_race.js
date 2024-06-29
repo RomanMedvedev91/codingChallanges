@@ -25,7 +25,7 @@ function race(funcs) {
         if (resolved) return;
         resolved = true;
         if (err) {
-          finalCb(er, undefined);
+          finalCb(err, undefined);
         } else {
           finalCb(undefined, result);
         }
