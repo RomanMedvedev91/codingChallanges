@@ -38,3 +38,30 @@ function throttlePromises(funcs, max){
     runCb();
   })
 }
+
+// second option
+
+function throttlePromise(fn, delay) {
+  let lastCall = 0;
+  let pendingPromise = null;
+
+  return function(...args) {
+    const now = Date.now();
+
+    if(now - lastCall < delay) {
+      if (!pendingPromise) {
+        pendingPromise = new Promise((resolve) => {
+          setTimeout(() => {
+            pendingPromise = null;
+            lastCall = Date.now();
+            resolve(fn(...args));
+          }, delay - (now - lastCall));
+        });
+      }
+      return pendingPromise;
+    } else {
+      lastCall = now;
+      return Promise.resolve(fn(...args));
+    }
+  }
+}
